@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 
-const connect = require("./config/database");
+import {da}from './config/database.js'
 
 const app = express();
 
