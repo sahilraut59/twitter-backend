@@ -11,17 +11,37 @@ export const signup = async (req, res) => {
     });
 
     return res.status(201).json({
-        success:true,
-        data:response,
-        message:'Successfully created a user',
-        err:{}
-    })
+      success: true,
+      data: response,
+      message: "Successfully created a user",
+      err: {},
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
       data: {},
       err: error,
       message: "Failed to signup",
+    });
+  }
+};
+
+export const login = async (req, res) => {
+  try {
+    const token = await userService.signin(req.body);
+
+    return res.status(200).json({
+      success: true,
+      message: "successfully logged in",
+      data: token,
+      err: {},
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      data: {},
+      err: error,
+      message: "Something went wrong",
     });
   }
 };
